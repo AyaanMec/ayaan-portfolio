@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,205 +9,208 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;}
-body {
-    font-family: "Inter", sans-serif;
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color: #e5e7eb;
-    scroll-behavior: smooth;
+:root {
+  --bg:#020617;
+  --card:#0f172a;
+  --text:#e5e7eb;
+  --accent:#3b82f6;
+}
+.light {
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#0f172a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* NAVBAR */
-nav {
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(10px);
-    background: rgba(2,6,23,0.7);
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 100;
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
 }
-nav a {
-    margin-left: 20px;
-    color: #94a3b8;
-    font-size: 14px;
+nav button{
+  background:none;
+  border:1px solid var(--accent);
+  color:var(--text);
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
 }
-nav a:hover { color: white; }
 
 /* HERO */
-header {
-    text-align:center;
-    padding:120px 20px 80px;
+header{
+  text-align:center;
+  padding:100px 20px;
 }
-header h1 {
-    font-size: 48px;
-}
-.typing {
-    color: #60a5fa;
-    font-weight:600;
-}
+.typing{color:var(--accent);font-weight:600;}
 
 /* SECTIONS */
-section {
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
+section{
+  max-width:1000px;
+  margin:auto;
+  padding:50px 20px;
 }
-h2 {
-    margin-bottom:20px;
-    border-left:4px solid #3b82f6;
-    padding-left:10px;
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  transition:.3s;
+  cursor:pointer;
+}
+.card:hover{transform:translateY(-5px);}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.modal-content{
+  background:var(--card);
+  padding:30px;
+  border-radius:12px;
+  max-width:600px;
 }
 
-/* CARD */
-.card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:20px;
-    transition:0.3s;
-}
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow:0 0 30px rgba(59,130,246,0.2);
-}
+/* FOOTER */
+footer{text-align:center;padding:30px;opacity:.6}
 
-/* SKILLS */
-.skill {
-    margin-bottom:12px;
-}
-.bar {
-    height:8px;
-    background:#1e293b;
-    border-radius:10px;
-}
-.fill {
-    height:8px;
-    background: linear-gradient(90deg,#3b82f6,#60a5fa);
-    border-radius:10px;
-    width:0;
-}
-
-/* BUTTON */
-.btn {
-    display:inline-block;
-    padding:10px 20px;
-    border-radius:8px;
-    background:#3b82f6;
-    color:white;
-    margin-top:15px;
-}
-.btn:hover { background:#2563eb; }
-
-footer {
-    text-align:center;
-    padding:30px;
-    opacity:0.6;
+/* PARTICLES */
+#particles{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-1;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="particles"></canvas>
+
 <nav>
-    <div><b>Ayaan</b></div>
-    <div>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </div>
+  <div><b>Ayaan</b></div>
+  <button onclick="toggleTheme()">Toggle Theme</button>
 </nav>
 
 <header>
-    <h1>Ayaan Mecklai</h1>
-    <p class="typing"></p>
-    <a class="btn" href="#">Download Resume</a>
+  <h1>Ayaan Mecklai</h1>
+  <p class="typing"></p>
 </header>
 
-<section id="about">
-<h2>About</h2>
-<div class="card">
-Computer Science student at York University with experience in AI, data analytics, and full-stack development.  
-Built scalable systems, analytics dashboards, and real-time visualization platforms. Passionate about building impactful tech products.
-</div>
-</section>
-
-<section id="projects">
+<section>
 <h2>Projects</h2>
 
-<div class="card">
-<b>Motion-Controlled Visualization System</b><br>
-Real-time 3D motion tracking platform streaming 60Hz data with 95% accuracy using Unity and WebSockets.
+<div class="card" onclick="openModal('proj1')">
+<b>Motion-Controlled Visualization</b><br>
+Click to view details
 </div>
 
-<div class="card">
-<b>F1 Performance Analytics Dashboard</b><br>
-Telemetry analytics dashboard visualizing race performance data using React and Recharts.
+<div class="card" onclick="openModal('proj2')">
+<b>F1 Analytics Dashboard</b><br>
+Click to view details
 </div>
 
-<div class="card">
-<b>Spotify Analytics Dashboard</b><br>
-Music behavior analytics system processing 50K+ data entries using React and OAuth.
+<div class="card" onclick="openModal('proj3')">
+<b>Spotify Analytics</b><br>
+Click to view details
 </div>
 
 </section>
 
-<section id="skills">
-<h2>Technical Skills</h2>
-
-<div class="card">
-
-<div class="skill">Python<div class="bar"><div class="fill" style="width:90%"></div></div></div>
-<div class="skill">Java<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-<div class="skill">JavaScript / React<div class="bar"><div class="fill" style="width:88%"></div></div></div>
-<div class="skill">SQL / Data Analytics<div class="bar"><div class="fill" style="width:80%"></div></div></div>
-<div class="skill">Cloud / Azure / Git<div class="bar"><div class="fill" style="width:75%"></div></div></div>
-
-</div>
+<section>
+<h2>GitHub Stats</h2>
+<img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=tokyonight" width="100%">
 </section>
 
-<section id="contact">
+<section>
 <h2>Contact</h2>
-<div class="card">
 📧 ayaanmec@my.yorku.ca <br>
 📞 +1 (437) 463-1419 <br>
 <a href="https://www.linkedin.com/in/ayaan-mecklai-7ba9b9278/" target="_blank">LinkedIn</a>
-</div>
 </section>
 
-<footer>
-© 2026 Ayaan Mecklai
-</footer>
+<footer>© 2026 Ayaan Mecklai</footer>
+
+<!-- MODALS -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" id="modal-content"></div>
+</div>
 
 <script>
-// Typing animation
-const text = ["Software Developer", "Data & AI Enthusiast", "Full Stack Builder"];
-let i = 0, j = 0, current = "", isDeleting = false;
-
-function type() {
-    const el = document.querySelector(".typing");
-    if (i < text.length) {
-        if (!isDeleting && j <= text[i].length) {
-            current = text[i].substring(0, j++);
-        } else if (isDeleting && j >= 0) {
-            current = text[i].substring(0, j--);
-        }
-
-        el.textContent = current;
-
-        if (j == text[i].length) isDeleting = true;
-        if (j === 0 && isDeleting) {
-            isDeleting = false;
-            i = (i + 1) % text.length;
-        }
-    }
-    setTimeout(type, isDeleting ? 50 : 100);
+/* Typing */
+const roles=["Software Developer","AI & Data Enthusiast","Full Stack Builder"];
+let i=0,j=0,cur="",del=false;
+function type(){
+  const el=document.querySelector(".typing");
+  if(!del&&j<=roles[i].length)cur=roles[i].slice(0,j++);
+  else if(del&&j>=0)cur=roles[i].slice(0,j--);
+  el.textContent=cur;
+  if(j==roles[i].length)del=true;
+  if(j==0&&del){del=false;i=(i+1)%roles.length;}
+  setTimeout(type,del?50:100);
 }
 type();
+
+/* Theme */
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+
+/* Modal */
+const data={
+  proj1:"Real-time 3D motion tracking system using Unity & WebSockets.",
+  proj2:"Telemetry analytics dashboard built with React and Recharts.",
+  proj3:"Music analytics system processing 50K+ listening data."
+};
+function openModal(id){
+  document.getElementById("modal-content").innerText=data[id];
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+
+/* Particles */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+let particles=[];
+for(let i=0;i<80;i++){
+  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5),vy:(Math.random()-.5)});
+}
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#3b82f6";
+  particles.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>canvas.width)p.vx*=-1;
+    if(p.y<0||p.y>canvas.height)p.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 
 </body>
 </html>
+```
