@@ -5,50 +5,76 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayaan Mecklai | Portfolio</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f5f7fa;
-    color: #333;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e5e7eb;
+    scroll-behavior: smooth;
 }
 
 header {
-    background: #0f172a;
-    color: white;
-    padding: 40px;
-    text-align: center;
+    text-align:center;
+    padding:80px 20px;
 }
 
+header h1 {
+    font-size: 42px;
+    font-weight:700;
+}
+
+header p {
+    opacity:0.8;
+    margin-top:10px;
+}
+
+a { color:#60a5fa; text-decoration:none; }
+
 section {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px;
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
 }
 
 h2 {
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
+    font-size:24px;
+    margin-bottom:20px;
+    border-left:4px solid #3b82f6;
+    padding-left:10px;
 }
 
 .card {
-    background: white;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    transition:0.3s;
+    opacity:0;
+    transform: translateY(20px);
 }
 
-a {
-    color: #2563eb;
-    text-decoration: none;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.skills span {
+    display:inline-block;
+    background:#1e293b;
+    padding:8px 12px;
+    border-radius:6px;
+    margin:5px;
+    font-size:14px;
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background: #0f172a;
-    color: white;
+    text-align:center;
+    padding:30px;
+    opacity:0.6;
 }
 </style>
 </head>
@@ -57,7 +83,7 @@ footer {
 
 <header>
     <h1>Ayaan Mecklai</h1>
-    <p>Computer Science Student — York University</p>
+    <p>Computer Science @ York University</p>
     <p>
         📧 ayaanmec@my.yorku.ca | 📞 +1 (437) 463-1419 <br>
         <a href="https://www.linkedin.com/in/ayaan-mecklai-7ba9b9278/" target="_blank">LinkedIn</a>
@@ -65,74 +91,98 @@ footer {
 </header>
 
 <section>
-    <h2>Education</h2>
-    <div class="card">
-        <b>York University — Lassonde School of Engineering</b><br>
-        Honors BSc in Computer Science (Class of 2027)<br>
-        Awards: Lassonde Entrance Scholar, ICE Award, A-Level Highest Grades (Physics, Math, Chemistry)
-    </div>
+<h2>Education</h2>
+<div class="card">
+York University — Lassonde School of Engineering <br>
+Honors BSc Computer Science — Class of 2027 <br>
+Awards: Lassonde Entrance Scholar, ICE Award, A-Level Highest Grades
+</div>
 </section>
 
 <section>
-    <h2>Professional Experience</h2>
+<h2>Experience</h2>
 
-    <div class="card">
-        <b>MyRide901 — Mobile App Developer / Market Insights Co-op</b> (2026)<br>
-        Built Python ETL pipeline syncing MySQL → Notion, automated reporting, and developed cross-platform attribution tracking system using GA4 and MMPs.
-    </div>
+<div class="card">
+<b>MyRide901 — Mobile App Developer / Market Insights Co-op</b><br>
+Built Python ETL pipeline, automated reporting, and cross-platform attribution system using GA4 and MMPs.
+</div>
 
-    <div class="card">
-        <b>Raasta AI — Software Development Intern</b> (2023–2024)<br>
-        Built AI travel planner for 5,000+ users, implemented personalization & safety algorithms, helped secure seed funding and improved retention by 30%.
-    </div>
+<div class="card">
+<b>Raasta AI — Software Development Intern</b><br>
+Developed AI travel planner for 5,000+ users, implemented personalization algorithms, improved retention by 30%.
+</div>
 
-    <div class="card">
-        <b>Research — Naive Bayes Spam Filtering</b><br>
-        Analyzed 6,000+ emails, achieved 91% accuracy, and built Chrome extension FilterMail for 500+ users.
-    </div>
-
-</section>
-
-<section>
-    <h2>Projects</h2>
-
-    <div class="card">
-        <b>Motion-Controlled Visualization System</b><br>
-        Real-time 3D motion streaming system (60Hz) with 95% tracking accuracy using Unity, WebSockets, and Android.
-    </div>
-
-    <div class="card">
-        <b>F1 Performance Analytics Dashboard</b><br>
-        Interactive telemetry dashboard visualizing throttle, brake, RPM, and race analytics using React & Recharts.
-    </div>
-
-    <div class="card">
-        <b>Spotify Analytics Dashboard</b><br>
-        Music analytics system analyzing 50K+ data entries, visualizing listening behavior and playback patterns.
-    </div>
+<div class="card">
+<b>Research — Naive Bayes Spam Filtering</b><br>
+Analyzed 6,000+ emails, achieved 91% accuracy, built Chrome extension FilterMail.
+</div>
 
 </section>
 
 <section>
-    <h2>Leadership & Volunteering</h2>
-    <div class="card">
-        <b>Speak To Lead — Director of Digital Strategy</b><br>
-        Led digital strategy for non-profit helping 300+ students, increased engagement by 200% and expanded partnerships.
-    </div>
+<h2>Projects</h2>
+
+<div class="card">
+<b>Motion-Controlled Visualization System</b><br>
+Real-time 3D motion tracking system (60Hz) with 95% accuracy using Unity and WebSockets.
+</div>
+
+<div class="card">
+<b>F1 Analytics Dashboard</b><br>
+Interactive telemetry dashboard visualizing race data using React and Recharts.
+</div>
+
+<div class="card">
+<b>Spotify Analytics Dashboard</b><br>
+Music analytics dashboard analyzing 50K+ listening data entries.
+</div>
+
 </section>
 
 <section>
-    <h2>Skills</h2>
-    <div class="card">
-        <b>Languages:</b> Python, Java, JavaScript, SQL<br>
-        <b>Tools:</b> React, Power BI, Looker Studio, Git, Azure, Android Studio, Excel, Oracle DB<br>
-        <b>Languages:</b> English (Fluent), German (Intermediate)
-    </div>
+<h2>Leadership</h2>
+<div class="card">
+<b>Speak To Lead — Director of Digital Strategy</b><br>
+Led digital strategy for non-profit helping 300+ students, increased engagement by 200%.
+</div>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="card skills">
+<span>Python</span>
+<span>Java</span>
+<span>JavaScript</span>
+<span>SQL</span>
+<span>React</span>
+<span>Power BI</span>
+<span>Azure</span>
+<span>Git</span>
+<span>Android Studio</span>
+<span>Excel</span>
+<span>Oracle DB</span>
+</div>
 </section>
 
 <footer>
-    © 2026 Ayaan Mecklai — Portfolio
+© 2026 Ayaan Mecklai
 </footer>
+
+<script>
+// Fade-in animation on scroll
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, { threshold: 0.1 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
